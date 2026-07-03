@@ -32,15 +32,17 @@
   {% block head_extra %}
   {% endblock %}
   <!-- Privacy-friendly analytics by Plausible -->
-  <script async src="https://plausible.io/js/pa-WRMaH3QHcCo_0RYbTsBgi.js"></script>
+  <script async src="/p/script.js"></script>
   <script>
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-    plausible.init()
+    plausible.init({
+      endpoint: "/p/api/event"
+    })
   </script>
 </head>
 
 <body
-    class="{% block body_class %}default-page{% endblock %} cc-legal-tools bidi-{% bidi_lr %}"
+    class="{% block body_class %}legal-tools{% endblock %} cc-legal-tools bidi-{% bidi_lr %}"
     typeof="{% block body_typeof %}{% endblock %}"
     about="{% block body_about %}{% endblock %}"
 >
@@ -50,9 +52,6 @@
 {% include 'includes/header.html' %}
 
 {% block attention %}
-<article class="attention low-importance">
-<p>Help us protect the commons. Make a tax deductible gift to fund our work. <a href="https://www.classy.org/give/313412/#!/donation/checkout?c_src=website&c_src2=temp-banner">Donate today!</a></p>
-</article>
 {% endblock %}
 
 <span id="main-content-marker"></span>
@@ -73,6 +72,10 @@
 {% include 'includes/footer.html' %}
 
 <script src="/wp-content/themes/vocabulary-theme/vocabulary/js/vocabulary.js"></script>
+<script src="/wp-content/themes/vocabulary-theme/pidgin/js/pidgin.js"></script>
+<script>
+  document.querySelector('.legalcode aside.sidebar ul.hide').classList.toggle('hide');
+</script>
 {% block extra-js %}
 {% endblock %}
 
